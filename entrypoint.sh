@@ -17,7 +17,7 @@ MERGER=$(jq .pull_request.merged_by.login < $EVENT_PATH)
 CREATOR=$(jq .pull_request.user.login < $EVENT_PATH)
 
 if [ $MERGER = $CREATOR ]; then
-    echo "YOU MERGED YOUR OWN PR! SHAME!";
+    echo "YOU MERGED YOUR OWN PR! SHAME! 👮🏻‍";
 else
     echo "NO!"
 fi
