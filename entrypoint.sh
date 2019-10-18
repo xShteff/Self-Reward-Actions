@@ -16,6 +16,12 @@ fi
 MERGER=$(jq .pull_request.merged_by.login < $EVENT_PATH)
 CREATOR=$(jq .pull_request.user.login < $EVENT_PATH)
 
+echo "PR MADE BY:"
+echo $CREATOR
+
+echo "PR MERGED BY:"
+echo $MERGER
+
 if [ $MERGER = $CREATOR ]; then
     echo "YOU MERGED YOUR OWN PR! SHAME! 👮🏻‍";
 else
