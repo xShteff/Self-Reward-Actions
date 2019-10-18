@@ -14,7 +14,7 @@
       "locked": false,
       "title": "Update the README with new information.",
       "user": {
-        "login": "Codertocat",
+        "login": "alstol",
         "id": 21031067,
         "node_id": "MDQ6VXNlcjIxMDMxMDY3",
         "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
@@ -41,16 +41,16 @@
       "merge_commit_sha": null,
       "assignee": null,
       "assignees": [
-  
+
       ],
       "requested_reviewers": [
-  
+
       ],
       "requested_teams": [
-  
+
       ],
       "labels": [
-  
+
       ],
       "milestone": null,
       "commits_url": "https://api.github.com/repos/Codertocat/Hello-World/pulls/2/commits",
