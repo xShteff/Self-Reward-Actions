@@ -16,15 +16,15 @@ fi
 MERGER=$(jq .pull_request.merged_by.login < $EVENT_PATH)
 CREATOR=$(jq .pull_request.user.login < $EVENT_PATH)
 
-echo "PR MADE BY:"
-echo $CREATOR
-
-echo "PR MERGED BY:"
-echo $MERGER
+echo "PR MADE BY: $CREATOR"
+echo "PR MERGED BY: $MERGER"
 
 if [ $MERGER = $CREATOR ]; then
     echo "YOU MERGED YOUR OWN PR! SHAME! 👮🏻‍";
+    set -eu
+    sh -c "npm install"
+    sh -c "node index.js $*"
 else
-    echo "NO!"
+    echo "$MERGER is a good man. Moving on..."
 fi
 
