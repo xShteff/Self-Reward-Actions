@@ -1,4 +1,5 @@
 #!/bin/sh
+set -eu
 
 ls
 
@@ -22,9 +23,8 @@ echo "PR MERGED BY: $MERGER"
 
 if [ $MERGER = $CREATOR ]; then
     echo "YOU MERGED YOUR OWN PR! SHAME! 👮🏻‍";
-    set -eu
-    sh -c "npm install"
-    sh -c "node index.js $*"
+    sh -c "npm --prefix /action install /action --production"
+    sh -c "node /action/index.js $*"
 else
     echo "$MERGER is a good man. Moving on..."
 fi
