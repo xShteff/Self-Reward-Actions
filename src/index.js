@@ -1,9 +1,7 @@
 const axios = require("axios");
 
-console.log(process);
-console.log(process.env);
-
 const NEUTRAL_ERROR_CODE = process.env.GITHUB_WORKFLOW ? 78 : 0;
+const githubActor = process.env.GITHUB_ACTOR || "";
 const githubEventPath = process.env.GITHUB_EVENT_PATH || "";
 const githubEvent = githubEventPath ? require(githubEventPath) : "";
 const githubRepo = process.env.GITHUB_REPOSITORY || "";
@@ -25,7 +23,7 @@ function postComment() {
   console.log("Posting image...");
   return axios.post(
     githubPrCommentsUri,
-    { body: `# When @alstol merges his own Pull Request \n![pr_self_merge](https://i.imgur.com/EQdmJcS.jpg)` },
+    { body: `# When @${githubActor} merges his own Pull Request \n![pr_self_merge](https://i.imgur.com/EQdmJcS.jpg)` },
     {
       headers: githubApiHeaders
     }
