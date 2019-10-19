@@ -1,5 +1,6 @@
 #!/bin/sh
 
+ls
 
 if [ -n "$GITHUB_EVENT_PATH" ];
 then
