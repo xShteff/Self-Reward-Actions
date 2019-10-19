@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: alstol/self-medal@master
+    - uses: alstol/Self-Reward-Actions@master
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
