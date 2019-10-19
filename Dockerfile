@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine-node
 
 LABEL "maintainer"="alstol"
 LABEL "repository"="https://github.com/managedkaos/print-env"
