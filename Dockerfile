@@ -1,4 +1,4 @@
-FROM alpine-node
+FROM mhart/alpine-node:10
 
 LABEL "maintainer"="alstol"
 LABEL "repository"="https://github.com/managedkaos/print-env"
