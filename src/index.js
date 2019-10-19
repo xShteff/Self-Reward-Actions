@@ -1,5 +1,8 @@
 const axios = require("axios");
 
+console.log(process);
+console.log(process.env);
+
 const NEUTRAL_ERROR_CODE = process.env.GITHUB_WORKFLOW ? 78 : 0;
 const githubEventPath = process.env.GITHUB_EVENT_PATH || "";
 const githubEvent = githubEventPath ? require(githubEventPath) : "";
@@ -22,7 +25,7 @@ function postComment() {
   console.log("Posting image...");
   return axios.post(
     githubPrCommentsUri,
-    { body: `Hello @alstol. Please don't merge your own PR!` },
+    { body: `# When @alstol merges his own Pull Request \n![pr_self_merge](https://i.imgur.com/EQdmJcS.jpg)` },
     {
       headers: githubApiHeaders
     }
