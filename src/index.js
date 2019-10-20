@@ -16,7 +16,7 @@ const githubApiHeaders = {
   Authorization: githubAuthHeader
 };
 const imageUrl = process.env.IMAGE_URL || "https://i.imgur.com/EQdmJcS.jpg";
-const memeHeader = process.env.MEME_HEADER || `When @${githubActor} merges his own Pull Request`;
+let memeHeader = process.env.MEME_HEADER || `When @${githubActor} merges his own Pull Request`;
 
 
 
