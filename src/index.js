@@ -1,23 +1,23 @@
 const axios = require("axios");
 
-const GitHubSettings = {
+let GitHubSettings = {
   NEUTRAL_ERROR_CODE: process.env.GITHUB_WORKFLOW ? 78 : 0,
   actor: process.env.GITHUB_ACTOR || "",
   eventPath: process.env.GITHUB_EVENT_PATH || "",
-  event: GitHubSettings.eventPath ? require(GitHubSettings.eventPath) : "",
+  event: this.eventPath ? require(this.eventPath) : "",
   repo: process.env.GITHUB_REPOSITORY || "",
-  repoUri: `https://api.github.com/repos/${GitHubSettings.repo}`,
-  prCommentsUri: `${GitHubSettings.repoUri}/issues/${GitHubSettings.eventPath.number}/comments`,
+  repoUri: `https://api.github.com/repos/${this.repo}`,
+  prCommentsUri: `${this.repoUri}/issues/${this.eventPath.number}/comments`,
   apiVersion: 'v3',
   token: process.env.GITHUB_TOKEN || "",
-  acceptHeader: `application/vnd.github.${GitHubSettings.apiVersion}+json; application/vnd.github.antiope-preview+json`,
-  authHeader: `token ${GitHubSettings.token}`,
+  acceptHeader: `application/vnd.github.${this.apiVersion}+json; application/vnd.github.antiope-preview+json`,
+  authHeader: `token ${this.token}`,
   apiHeaders: {
-    Accept: GitHubSettings.acceptHeader,
-    Authorization: GitHubSettings.authHeader 
+    Accept: this.acceptHeader,
+    Authorization: this.authHeader 
   },
   imageUrl: process.env.IMAGE_URL || "https://i.imgur.com/EQdmJcS.jpg",
-  memeHeader: process.env.MEME_HEADER || `When @${GitHubSettings.actor} merges his own Pull Request`
+  memeHeader: process.env.MEME_HEADER || `When @${this.actor} merges his own Pull Request`
 }
 
 /**
@@ -42,7 +42,7 @@ if (
   console.log(
     `GitHub event payload not found or Pull Request event does not have desired action. Action was ${GitHubSettings.event.action}.`
   );
-  process.exit(NEUTRAL_ERROR_CODE);
+  process.exit(GitHubSettings.NEUTRAL_ERROR_CODE);
 }
 
 postComment()
