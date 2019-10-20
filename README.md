@@ -20,6 +20,8 @@ jobs:
     - uses: alstol/Self-Reward-Actions@master
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       IMAGE_URL: https://media.tenor.com/images/9da8bb145d928fb9e53772588622ca53/tenor.gif
+       MEME_HEADER: <NAME> just merged his own PR! Shame!
 
 ````
 
@@ -27,6 +29,9 @@ jobs:
 
 This Action requires you have the `GITHUB_TOKEN` secret, so it can post the comment on the PR.
 
+### Custom variables
+
+You can use `<NAME>` in the `MEME_HEADER` env variable to replace it with the actor of the Action.
 
 ## Why?
 
