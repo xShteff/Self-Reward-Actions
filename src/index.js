@@ -7,7 +7,7 @@ let GitHubSettings = {
   event: this.eventPath ? require(this.eventPath) : "",
   repo: process.env.GITHUB_REPOSITORY || "",
   repoUri: `https://api.github.com/repos/${this.repo}`,
-  prCommentsUri: `${this.repoUri}/issues/${this.eventPath.number}/comments`,
+  prCommentsUri: `${this.repoUri}/issues/${process.env.GITHUB_EVENT_PATH.number}/comments`,
   apiVersion: 'v3',
   token: process.env.GITHUB_TOKEN || "",
   acceptHeader: `application/vnd.github.${this.apiVersion}+json; application/vnd.github.antiope-preview+json`,
