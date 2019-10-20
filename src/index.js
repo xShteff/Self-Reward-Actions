@@ -1,48 +1,50 @@
 const axios = require("axios");
 
-let GitHubSettings = {
-  NEUTRAL_ERROR_CODE: process.env.GITHUB_WORKFLOW ? 78 : 0,
-  actor: process.env.GITHUB_ACTOR || "",
-  eventPath: process.env.GITHUB_EVENT_PATH || "",
-  event: this.eventPath ? require(this.eventPath) : "",
-  repo: process.env.GITHUB_REPOSITORY || "",
-  repoUri: `https://api.github.com/repos/${this.repo}`,
-  prCommentsUri: `${this.repoUri}/issues/${process.env.GITHUB_EVENT_PATH.number}/comments`,
-  apiVersion: 'v3',
-  token: process.env.GITHUB_TOKEN || "",
-  acceptHeader: `application/vnd.github.${this.apiVersion}+json; application/vnd.github.antiope-preview+json`,
-  authHeader: `token ${this.token}`,
-  apiHeaders: {
-    Accept: this.acceptHeader,
-    Authorization: this.authHeader 
-  },
-  imageUrl: process.env.IMAGE_URL || "https://i.imgur.com/EQdmJcS.jpg",
-  memeHeader: process.env.MEME_HEADER || `When @${this.actor} merges his own Pull Request`
-}
+const NEUTRAL_ERROR_CODE = process.env.GITHUB_WORKFLOW ? 78 : 0;
+const githubActor = process.env.GITHUB_ACTOR || "";
+const githubEventPath = process.env.GITHUB_EVENT_PATH || "";
+const githubEvent = githubEventPath ? require(githubEventPath) : "";
+const githubRepo = process.env.GITHUB_REPOSITORY || "";
+const githubRepoUri = `https://api.github.com/repos/${githubRepo}`;
+const githubPrCommentsUri = `${githubRepoUri}/issues/${githubEvent.number}/comments`;
+const githubApiVersion = "v3";
+const githubToken = process.env.GITHUB_TOKEN || "";
+const githubAcceptHeader = `application/vnd.github.${githubApiVersion}+json; application/vnd.github.antiope-preview+json`;
+const githubAuthHeader = `token ${githubToken}`;
+const githubApiHeaders = {
+  Accept: githubAcceptHeader,
+  Authorization: githubAuthHeader
+};
+const imageUrl = process.env.IMAGE_URL || "https://i.imgur.com/EQdmJcS.jpg";
+const memeHeader = process.env.MEME_HEADER || `When @${githubActor} merges his own Pull Request`;
+
+
 
 /**
  * @return {Promise} Promise representing the HTTP POST of a comment.
  */
 function postComment() {
   console.log("Posting image...");
-  GitHubSettings.memeHeader = GitHubSettings.memeHeader.replace("<NAME>", `@${GitHubSettings.actor}`);
+  memeHeader = memeHeader.replace("<NAME>", `@${githubActor}`);
+
   return axios.post(
-    GitHubSettings.prCommentsUri,
-    { body: `# ${GitHubSettings.memeHeader} \n![pr_self_merge](${GitHubSettings.imageUrl})` },
+    githubPrCommentsUri,
+    { body: `# ${memeHeader} \n![pr_self_merge](${imageUrl})` },
     {
-      headers: GitHubSettings.apiHeaders
+      headers: githubApiHeaders
     }
   );
 }
 
+
 if (
-  !GitHubSettings.event ||
-  (GitHubSettings.event.action !== "closed")
+  !githubEvent ||
+  (githubEvent.action !== "closed")
 ) {
   console.log(
-    `GitHub event payload not found or Pull Request event does not have desired action. Action was ${GitHubSettings.event.action}.`
+    `GitHub event payload not found or Pull Request event does not have desired action. Action was ${githubEvent.action}.`
   );
-  process.exit(GitHubSettings.NEUTRAL_ERROR_CODE);
+  process.exit(NEUTRAL_ERROR_CODE);
 }
 
 postComment()
