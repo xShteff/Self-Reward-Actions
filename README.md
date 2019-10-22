@@ -1,6 +1,6 @@
 # Self Reward Actions
 
-A simple GitHub Action that posts this image whenever someone merges his own Pull Request:
+A simple GitHub Action that posts this image whenever someone merges their own Pull Request:
 
 ![image](https://user-images.githubusercontent.com/9394141/67147509-cf17c080-f295-11e9-95ac-74522a1ed82c.png)
 
