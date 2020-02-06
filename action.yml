@@ -4,4 +4,6 @@ author: 'Alin Stefan Olaru'
 branding:
     icon: 'briefcase'  
     color: 'purple'
-image: 'Dockerfile'
+runs:
+  using: 'docker'
+  image: 'Dockerfile
