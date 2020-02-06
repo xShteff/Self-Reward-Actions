@@ -1,0 +1,7 @@
+name: 'self-reward-actions'
+description: 'Posts a meme if someone merges their own PR'
+author: 'Alin Stefan Olaru'
+branding:
+    icon: 'briefcase'  
+    color: 'purple'
+image: 'Dockerfile'
