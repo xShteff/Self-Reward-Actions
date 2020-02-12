@@ -1,5 +1,5 @@
-name: 'PR self merge reward'
-description: 'Posts a meme if someone merges their own PR'
+name: 'Reward for own PR approval'
+description: 'Posts a meme if someone approves/merges their own PR'
 author: 'Alin Stefan Olaru'
 branding:
     icon: 'briefcase'  
