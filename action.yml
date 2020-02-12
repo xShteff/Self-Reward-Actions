@@ -1,4 +1,4 @@
-name: 'self-reward-actions'
+name: 'PR self merge reward'
 description: 'Posts a meme if someone merges their own PR'
 author: 'Alin Stefan Olaru'
 branding:
