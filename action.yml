@@ -2,8 +2,17 @@ name: 'Reward for own PR approval'
 description: 'Posts a meme if someone approves/merges their own PR'
 author: 'Alin Stefan Olaru'
 branding:
-    icon: 'briefcase'  
-    color: 'purple'
+  icon: 'briefcase'  
+  color: 'purple'
+inputs:
+  meme_header:
+    description: 'The header of the meme. You can use <NAME> to use the actor name'
+    required: false
+    default: '<NAME> just merged their own PR! Shame!'
+  image_url:
+    description: 'The image you want displayed'
+    required: false
+    default: 'https://media.tenor.com/images/9da8bb145d928fb9e53772588622ca53/tenor.gif'
 runs:
   using: 'docker'
   image: 'Dockerfile
