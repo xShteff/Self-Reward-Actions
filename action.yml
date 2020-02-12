@@ -15,4 +15,4 @@ inputs:
     default: 'https://media.tenor.com/images/9da8bb145d928fb9e53772588622ca53/tenor.gif'
 runs:
   using: 'docker'
-  image: 'Dockerfile
+  image: 'Dockerfile'
