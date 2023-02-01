@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: xShteff/Self-Reward-Actions@v1
+    - uses: xShteff/Self-Reward-Actions@v2
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        IMAGE_URL: https://media.tenor.com/images/9da8bb145d928fb9e53772588622ca53/tenor.gif
