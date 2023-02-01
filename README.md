@@ -17,21 +17,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: alstol/Self-Reward-Actions@v1
+    - uses: xShteff/Self-Reward-Actions@v1
       env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        IMAGE_URL: https://media.tenor.com/images/9da8bb145d928fb9e53772588622ca53/tenor.gif
-       MEME_HEADER: <NAME> just merged his own PR! Shame!
+       MEME_HEADER: ${{ env.GITHUB_ACTOR }} just merged their own PR! Shame!
 
 ````
 
 ## Required variables
 
-This Action requires you have the `GITHUB_TOKEN` secret, so it can post the comment on the PR.
-
-### Custom variables
-
-You can use `<NAME>` in the `MEME_HEADER` env variable to replace it with the actor of the Action.
+This Action requires you have the `GITHUB_TOKEN` secret set up, so it can post the comment on the PR.
 
 ## Why?
 
